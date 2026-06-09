@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ロビー - WEREWOLF DEATH</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="lobby-page">
+      <h1>ロビー</h1>
+      <div class="lobby-actions">
+        <button class="btn btn-primary" onclick="showCreateModal()">部屋を作る</button>
+        <button class="btn btn-secondary" onclick="showJoinModal()">部屋に参加</button>
+        <button class="btn btn-ghost" onclick="refreshList()">更新</button>
+        <button class="btn btn-ghost" onclick="location.href='/'">戻る</button>
+      </div>
+      <h2 style="font-size:1rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">部屋一覧</h2>
+      <div id="roomList" class="room-list"><p style="color:var(--text-secondary);">読み込み中...</p></div>
+    </div>
+  </div>
+
+  <div id="createModal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCreateModal()">&times;</button>
+      <h2>部屋を作る</h2>
+      <form onsubmit="createRoom(event)">
+        <div class="form-group">
+          <label>あなたの名前</label>
+          <input type="text" id="creatorName" required maxlength="16" placeholder="名前を入力">
+        </div>
+        <div class="form-group">
+          <label>部屋名</label>
+          <input type="text" id="roomName" required maxlength="24" placeholder="部屋の名前">
+        </div>
+        <div class="form-group">
+          <label>パスワード（任意）</label>
+          <input type="password" id="roomPassword" maxlength="20" placeholder="空欄で誰でも参加可">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">作成</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="joinModal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeJoinModal()">&times;</button>
+      <h2>部屋に参加</h2>
+      <form onsubmit="joinRoom(event)">
+        <div class="form-group">
+          <label>あなたの名前</label>
+          <input type="text" id="joinUserName" required maxlength="16" placeholder="名前を入力">
+        </div>
+        <div class="form-group">
+          <label>部屋コード</label>
+          <input type="text" id="joinRoomCode" required maxlength="6" style="text-transform:uppercase;font-family:monospace;" placeholder="例: ABC123">
+        </div>
+        <div class="form-group">
+          <label>パスワード</label>
+          <input type="password" id="joinPassword" maxlength="20" placeholder="設定されている場合のみ">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">参加</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/lobby.js"></script>
+</body>
+</html>

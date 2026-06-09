@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>部屋 - WEREWOLF DEATH</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="room-page">
+      <div class="room-header">
+        <h1 id="roomNameDisplay">部屋</h1>
+        <div class="room-code-display">
+          部屋コード: <span id="roomCodeDisplay">------</span>
+          <button class="btn btn-ghost btn-small" onclick="copyCode()">コピー</button>
+        </div>
+      </div>
+
+      <div class="room-content">
+        <div class="section-card">
+          <h2>参加者 (<span id="playerCount">0</span>)</h2>
+          <div id="playersList" class="player-list"></div>
+          <div id="spectatorSection" style="margin-top:16px;display:none;">
+            <h3 style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">観戦者</h3>
+            <div id="spectatorList" class="player-list"></div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <h2>ゲーム設定</h2>
+          <div class="settings-grid">
+            <div class="form-group">
+              <label>人狼の数</label>
+              <select id="wolfCount">
+                <option value="2">2人</option>
+                <option value="3" selected>3人</option>
+                <option value="4">4人</option>
+                <option value="5">5人</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>最大人数</label>
+              <select id="maxPlayers">
+                <option value="6">6人</option>
+                <option value="8" selected>8人</option>
+                <option value="10">10人</option>
+                <option value="12">12人</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-small" onclick="saveSettings()" style="margin-top:10px;">設定を保存</button>
+        </div>
+      </div>
+
+      <div class="room-actions">
+        <button class="btn btn-gold btn-large" onclick="startGame()" id="startBtn">ゲーム開始</button>
+        <button class="btn btn-ghost" onclick="leaveRoom()">退出</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/room.js"></script>
+</body>
+</html>

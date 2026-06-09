@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEREWOLF DEATH</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="title-screen">
+      <div>
+        <h1 class="game-title">WEREWOLF DEATH</h1>
+        <p class="game-subtitle">正体隠匿 心理戦 人狼ゲーム</p>
+      </div>
+      <div class="menu-buttons">
+        <button class="btn btn-primary btn-large" onclick="location.href='/lobby'">ゲームを始める</button>
+        <button class="btn btn-secondary" onclick="showRules()">遊び方</button>
+      </div>
+    </div>
+
+    <div id="rulesModal" class="modal-overlay" style="display:none;">
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeRules()">&times;</button>
+        <h2>遊び方</h2>
+        <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.8;">
+          <p style="margin-bottom:16px;">村を襲撃しながら生き延びる人狼の群れ。しかし、その中に村人側のスパイが1人潜入している。</p>
+          <h3 style="color:var(--accent-gold);margin:12px 0 6px;">目的</h3>
+          <p><b style="color:var(--wolf-color);">人狼:</b> スパイを殺す or 全員の飢餓日数2.5日以上</p>
+          <p><b style="color:var(--spy-color);">スパイ:</b> 人狼を全員餓死させる or 生存1人以下にする</p>
+          <h3 style="color:var(--accent-gold);margin:12px 0 6px;">流れ</h3>
+          <p>1. 襲撃決議 → 2. 夜襲(2ターン目〜) → 3. 通報決議 → 4. 飢餓チェック</p>
+          <h3 style="color:var(--accent-gold);margin:12px 0 6px;">飢餓システム</h3>
+          <p>初期1.5日。襲撃成功で+0.5日、失敗で-1日。0日で餓死。</p>
+          <h3 style="color:var(--accent-gold);margin:12px 0 6px;">スパイの能力</h3>
+          <p>爪切り(夜襲時、対象の襲撃不可) / 放火(通報スキップ) / 信号弾(襲撃阻止) / 警告(成功率低下)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function showRules() { document.getElementById('rulesModal').style.display = 'flex'; }
+    function closeRules() { document.getElementById('rulesModal').style.display = 'none'; }
+    document.getElementById('rulesModal').addEventListener('click', function(e) {
+      if (e.target === this) closeRules();
+    });
+  </script>
+</body>
+</html>

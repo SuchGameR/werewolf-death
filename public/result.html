@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>結果 - WEREWOLF DEATH</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="result-page">
+      <div class="page-card">
+        <div id="winnerBanner" class="result-winner-banner">
+          <h2>---</h2>
+          <p style="color:var(--text-secondary);">勝者</p>
+        </div>
+
+        <div style="margin:30px 0;">
+          <h3 style="color:var(--text-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;">役職公開</h3>
+          <div id="roleReveal" class="role-reveal-grid"></div>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn btn-primary" onclick="backToLobby()">ロビーに戻る</button>
+          <button class="btn btn-ghost" onclick="location.href='/'">タイトルに戻る</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/result.js"></script>
+</body>
+</html>

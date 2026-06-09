@@ -1,0 +1,17 @@
+{
+  "name": "werewolf-death",
+  "version": "2.0.0",
+  "description": "心理戦・正体隠匿型人狼ゲーム",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "db": "node dbManager.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "sqlite3": "^5.1.6"
+  }
+}
